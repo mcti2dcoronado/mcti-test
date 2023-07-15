@@ -127,13 +127,13 @@ resource "google_cloudfunctions_function" "my_function" {
     for_each              =   { for region in local.list : region.region => region...}
     name                    =   "my-function-${each.key}"
     description             =   "My function"
-    runtime                 =   "nodejs10"
+    runtime                 =   "nodejs20"
 
     available_memory_mb     =   128
     source_archive_bucket   =   google_storage_bucket.my_bucket.name
     source_archive_object   =   google_storage_bucket_object.my_archive.name
     trigger_http            =   true
-    entry_point             =   "helloGET" 
+    entry_point             =   "helloHttp" 
     project                 =   var.project_id
     region                  =   each.key
 

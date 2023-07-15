@@ -30,7 +30,7 @@ resource "google_compute_region_network_endpoint_group" "my_function_neg" {
   region                =   each.key
 
   cloud_function {
-    function = google_cloudfunctions_function.my_function.name
+    function = "my-function-${each.key}"
   }
 
   project = var.project_id
@@ -124,7 +124,8 @@ resource "google_compute_global_forwarding_rule" "my_serverless_load_balancer" {
 
 
 resource "google_cloudfunctions_function" "my_function" {
-    name                    =   "my-function"
+    for_each              =   { for region in local.list : region.region => region...}
+    name                    =   "my-function-${each.key}"
     description             =   "My function"
     runtime                 =   "nodejs10"
 
@@ -134,6 +135,7 @@ resource "google_cloudfunctions_function" "my_function" {
     trigger_http            =   true
     entry_point             =   "helloGET" 
     project                 =   var.project_id
+    region                  =   each.key
 
     depends_on = [
       google_storage_bucket.my_bucket , google_storage_bucket_object.my_archive

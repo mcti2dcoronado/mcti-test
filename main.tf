@@ -43,7 +43,7 @@ resource "google_compute_region_network_endpoint_group" "my_function_neg" {
 resource "google_compute_backend_service" "my_backends_serverless" {
     for_each        =   { for backend in local.list : backend.path => backend...} 
                      
-    name = "backend-${each.key}"
+    name = lower("backend-${each.key}")
     connection_draining_timeout_sec = 0
     load_balancing_scheme           = "EXTERNAL_MANAGED"
     locality_lb_policy              = "ROUND_ROBIN"

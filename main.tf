@@ -141,7 +141,7 @@ resource "google_cloudfunctions_function" "my_function" {
 }
 
 resource "google_storage_bucket" "my_bucket" {
-  name     = "my-function-bucket"
+  name     = "my-function-bucket-${var.project_id}"
   location = "US"
 }
 

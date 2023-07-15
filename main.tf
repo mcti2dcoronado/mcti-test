@@ -71,7 +71,7 @@ resource "google_compute_backend_service" "my_backends_serverless" {
 
 resource "google_compute_url_map" "my_url_map_serverless" {
   default_service = google_compute_backend_service.my_backends_serverless["getData"].self_link
-  name            = "my_url_map_serverless"
+  name            = "my-url-map-serverless"
   project         = var.project_id
   host_rule {
     hosts         = ["montreal_college"]

@@ -113,7 +113,7 @@ resource "google_compute_global_forwarding_rule" "my_serverless_load_balancer" {
   load_balancing_scheme = "EXTERNAL_MANAGED"
   name                  = "my-frontend"
   target                = google_compute_target_http_proxy.my_http_proxy_keep_alive.self_link
-  port_range            = "443"
+  port_range            = "80"
   project               = var.project_id
 
   depends_on = [

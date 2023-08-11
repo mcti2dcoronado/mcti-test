@@ -144,9 +144,9 @@ resource "google_cloudfunctions_function" "my_function" {
 
 # IAM entry for all users to invoke the function
 resource "google_cloudfunctions_function_iam_member" "invoker" {
-  project        = google_cloudfunctions_function.my_function.project
-  region         = google_cloudfunctions_function.my_function.region
-  cloud_function = google_cloudfunctions_function.my_function.name
+  project        = google_cloudfunctions_function.my_function[each.key].project
+  region         = google_cloudfunctions_function.my_function[each.key].region
+  cloud_function = google_cloudfunctions_function.my_function[each.key].name
 
   role   = "roles/cloudfunctions.invoker"
   member = "allUsers"

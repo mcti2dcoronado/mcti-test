@@ -144,6 +144,7 @@ resource "google_cloudfunctions_function" "my_function" {
 
 # IAM entry for all users to invoke the function
 resource "google_cloudfunctions_function_iam_member" "invoker" {
+  for_each       = { for region in local.list : region.region => region...}
   project        = google_cloudfunctions_function.my_function[each.key].project
   region         = google_cloudfunctions_function.my_function[each.key].region
   cloud_function = google_cloudfunctions_function.my_function[each.key].name

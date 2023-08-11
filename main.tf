@@ -49,7 +49,7 @@ resource "google_compute_backend_service" "my_backends_serverless" {
     locality_lb_policy              = "ROUND_ROBIN"
     port_name                       = "http"
     project                         = var.project_id
-    protocol                        = "HTTPS"
+    protocol                        = "HTTP"
     session_affinity                = "NONE"
     timeout_sec                     = 30
 

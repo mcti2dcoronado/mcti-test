@@ -11,6 +11,9 @@ Deploying a regional external application load balancer with Cloud Functions usi
 
 ## How to set up a regional external Application Load Balancer with Cloud Functions
 
+### Diagram
+![screenshot](readme/diagram.jpg)
+
 ### Description
 A regional external Application Load Balancer is a region's proxy-based Layer 7 load balancer.  
 It runs and scales Serverless services behind a single external IP address. 
@@ -22,7 +25,7 @@ The Cloud Function code is saved in a bucket service.
 - HTTPS is not implemented
 - The serverless NEG and the load balancer must be in the same region as the Cloud Functions service. 
 
-## Features 
+### Features 
 Load balancing is essential for applications that need high availability, reliability, and scalability. 
 A Load Balancer could route traffic to the closest user location for serverless computing services such as cloud Functions, improving experience and latency for the end user. 
 
@@ -36,7 +39,8 @@ A Load Balancer could route traffic to the closest user location for serverless 
 - Security Admin
 - Storage Admin
 
-# Resources
+
+### Resources
 
 | # | Resource  |  Description |
 |---|---------- |  ------------------ | 
@@ -50,8 +54,29 @@ A Load Balancer could route traffic to the closest user location for serverless 
 |`8`| google_storage_bucket| Creates a new bucket in Google cloud storage service  |
 |`9`| google_storage_bucket_object| Creates a new object inside an existing bucket|
 
+### Cloud Functions
 
-# References
+index.js
+```
+const functions = require('@google-cloud/functions-framework');
+
+functions.http('helloHttp', (req, res) => {
+  res.send(`Hello ${req.query.name || req.body.name || 'World'}!`);
+});
+```
+
+package.json
+
+```
+{
+  "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0"
+  }
+}
+```
+
+
+## References
 
 |Description| URL|
 |-----|-----|

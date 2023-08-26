@@ -143,7 +143,9 @@ A Load Balancer could route traffic to the closest user location for serverless 
 |-----|----|-----|
 |path_matcher|default_service|my_backends_serverless: getData (self_link)|
 ||path_rule|my_bakends_serverless: getdata, postdata, putdata, deletedata|
-|host_rule|hosts|montreal_college|
+|host_rule|hosts|montreal_college<sup>2</sup>|
+
+<sup>2</sup> Replace with your domain - i.e. montreal-college.online
 
 ##### `google_compute_target_http_proxy`
 

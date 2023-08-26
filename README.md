@@ -12,7 +12,7 @@ Deploying a regional external application load balancer with Cloud Functions usi
 ## How to set up a regional external Application Load Balancer with Cloud Functions
 
 ### Diagram
-![screenshot](readme/diagram.jpg)
+![screenshot](readme/diagram.png)
 
 ### Description
 A regional external Application Load Balancer is a region's proxy-based Layer 7 load balancer.  
